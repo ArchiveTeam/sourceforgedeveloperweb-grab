@@ -412,6 +412,7 @@ wget.callbacks.write_to_warc = function(url, http_stat)
   is_initial_url = false
   if http_stat["statcode"] ~= 200
     and http_stat["statcode"] ~= 301
+    and http_stat["statcode"] ~= 404
     and http_stat["statcode"] ~= 302 then
     retry_url = true
     return false
