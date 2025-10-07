@@ -161,7 +161,7 @@ allowed = function(url, parenturl)
         local user = string.match(match, "^([^%.]+)")
         local path = string.match(match, "^[^/]+(.-)$")
         if parenturl and string.match(parenturl, "//") then
-          path = string.gsub(match, "/+", "/")
+          path = string.gsub(path, "/+", "/")
         end
         match = user .. ":" .. path
       end
