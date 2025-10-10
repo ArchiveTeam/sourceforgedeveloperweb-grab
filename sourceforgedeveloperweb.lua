@@ -413,15 +413,16 @@ wget.callbacks.write_to_warc = function(url, http_stat)
   if http_stat["statcode"] ~= 200
     and http_stat["statcode"] ~= 301
     and http_stat["statcode"] ~= 404
+    and http_stat["statcode"] ~= 403
     and http_stat["statcode"] ~= 302 then
     retry_url = true
     return false
   end
-  if http_stat["len"] == 0
+  --[[if http_stat["len"] == 0
     and http_stat["statcode"] < 300 then
     retry_url = true
     return false
-  end
+  end]]
   if abortgrab then
     print("Not writing to WARC.")
     return false
